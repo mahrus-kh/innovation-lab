@@ -93,14 +93,8 @@
         <li class="header">MENU</li>
         <!-- Optionally, you can add icons to the links -->
         <li><a href=""><i class="fa fa-dashboard"></i><span> Dashboard</span></a></li>
-        <li class="active treeview">
-          <a href="#"><i class="fa fa-id-card"></i><span> Student</span><span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span></a>
-          <ul class="treeview-menu">
-            <li><a href="<?php echo base_url('student-data/show')?>"><i class="fa fa-circle-o"></i> Student Data</a></li>
-            <li class="active"><a href="<?php echo base_url('student-card/show')?>"><i class="fa fa-circle-o"></i> Student Card</a></li>
-          </ul>
-        </li>
-        <li><a href=""><i class="fa fa-handshake-o" aria-hidden="true"></i><span> Left Stuff</span></a></li>
+        <li class="active"><a href="<?php echo base_url('student-card/show')?>"><i class="fa fa-id-card" aria-hidden="true"></i><span> Student Card</span></a></li>
+        <li><a href="<?php echo base_url('left-stuff/show')?>"><i class="fa fa-shopping-basket" aria-hidden="true"></i><span> Left Stuff</span></a></li>
         <li><a href=""><i class="fa fa-hdd-o" aria-hidden="true"></i><span> Repository</span></a></li>
         <li><a href="<?php echo base_url('certification/show') ?>"><i class="fa fa-certificate" aria-hidden="true"></i><span> Certification</span></a></li>
         <li class="treeview">
@@ -135,76 +129,120 @@
     </section>
     <!-- Main content -->
   <section class="content">
-    <div class="row">
-      <div class="col-sm-6 col-md-4">
-        <div class="info-box bg-red">
-          <span class="info-box-icon fa fa-male"></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Siswa Laki - Laki</span>
-            <span class="info-box-number"><div id="male_students">Loading...</div></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-md-4">
-        <div class="info-box bg-green">
-          <span class="info-box-icon"><i class="fa fa-male"></i> <i class="fa fa-female"></i></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Total Seluruh Siswa</span>
-            <span class="info-box-number"><div id="all_students">Loading...</div></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="col-sm-6 col-md-4">
-        <div class="info-box bg-blue">
-          <span class="info-box-icon fa fa-female"></span>
-          <div class="info-box-content">
-            <span class="info-box-text">Siswa Perempuan</span>
-            <span class="info-box-number"><div id="female_students">Loading...</div></span>
-          </div>
-        </div>
-      </div>
-    </div>
-        <div class="box box-primary">
-          <div class="box-header with-border">
-            <h4 class="box-tittle"><i class="fa fa-graduation-cap"></i> Data Siswa</h4>
-              <div class="box-tools pull-right">
-                  <button type="button" class="btn btn-primary btn-sm" onclick="add()"><i class="fa fa-plus"></i> Tambah Siswa</button>
+        <div class="row">
+          <div class="col-sm-6 col-md-10">
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h4 class="box-tittle">Student Card Data</h4>
+                  <div class="box-tools pull-right">
+                      <button type="button" class="btn btn-primary btn-sm" onclick="add()"><span class="glyphicon glyphicon-plus"></span> Student Card</button>
+                  </div>
               </div>
+              <div class="box-body">
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped" id="student-card-dt">
+                    <thead>
+                      <tr class="info">
+                        <th>ID Student</th>
+                        <th>Name</th>
+                        <th>Status Print</th>
+                        <th>Status Taken</th>
+                        <th>Tools</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
           </div>
-          <div class="box-body">
-            <div class="table-responsive">
-            <table class="table table-bordered table-hover table-striped" id="datasiswa-dt">
-                <thead>
-                  <tr class="info">
-                    <th>NIS</th>
-                    <th>Nama Lengkap</th>
-                    <th>JK</th>
-                    <th>Tanggal Lahir</th>
-                    <th>Alamat Lengkap</th>
-                    <th>Tools</th>
-                  </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
+          <div class="col-sm-6 col-md-2">
+            <div class="box box-danger box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Not Printed</h3>
+              </div>
+              <div class="box-body"><b><div id="not_printed"></div></b></div>
+            </div>
+            <div class="box box-danger box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Have Not Taken</h3>
+              </div>
+              <div class="box-body"><b><div id="have_not_taken"></b></div></div>
+            </div>
+            <div class="box box-primary box-solid">
+              <div class="box-header">
+                <h3 class="box-title">All</h3>
+              </div>
+              <div class="box-body"><b><div id="all"></div></b></div>
+            </div>
+            <div class="box box-success box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Printed</h3>
+              </div>
+              <div class="box-body"><b><div id="printed"></div></b></div>
+            </div>
+            <div class="box box-success box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Taken</h3>
+              </div>
+              <div class="box-body"><b><div id="taken"></div></b></div>
+            </div>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-6 col-md-5">
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h4 class="box-tittle">Program Study Data</h4>
+                  <div class="box-tools pull-right">
+                      <button type="button" class="btn btn-primary btn-sm" onclick="add()"><span class="glyphicon glyphicon-plus"></span> Prody</button>
+                  </div>
+              </div>
+              <div class="box-body">
+                <div class="table-responsive">
+                <table class="table table-bordered table-hover table-striped" id="student-card-dt">
+                    <thead>
+                      <tr class="info">
+                        <th>Program Study</th>
+                        <th>Tools</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+              </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-6 col-md-7">
+            <div class="row">
+                <?php for ($i=0; $i <5 ; $i++) { //Loop how many from database
+                  echo '<div class="col-sm-6 col-md-4">
+                    <div class="box box-warning box-solid">
+                      <div class="box-header">
+                        <h3 class="box-title">Program Study</h3>
+                      </div>
+                      <div class="box-body">30</div>
+                    </div>
+                  </div>';
+                } ?>
+            </div>
           </div>
         </div>
     </section>
     <!-- /.content -->
   </div>
-  <!-- /.content-wrapper -->
 
+  <!-- /.content-wrapper -->
   <!-- Main Footer -->
   <footer class="main-footer">
-    <!-- To the right -->
+        <!-- To the right -->
     <div class="pull-right hidden-xs">
 
     </div>
     <!-- Default to the left -->
-    <strong>Copyright &copy; 2016 <a href="#">Company</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2017<a href="#"></a></strong>
   </footer>
 </div>
 <!-- ./wrapper -->
@@ -225,3 +263,8 @@
 <script src="../assets/dist/js/app.min.js"></script>
 </body>
 </html>
+<script type="text/javascript">
+$(document).ready(function () {
+
+});
+</script>

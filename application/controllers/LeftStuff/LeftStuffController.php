@@ -11,7 +11,6 @@ class LeftStuffController extends CI_Controller
     $this->load->model('LeftStuff/LeftStuffModel');
   }
   function insert_dummy(){
-       // jumlah data yang akan di insert
        $jumlah_data = 25;
        for ($i=1;$i<=$jumlah_data;$i++){
            $data   =   array(
@@ -28,7 +27,6 @@ class LeftStuffController extends CI_Controller
        }
        echo $i.' Data Berhasil Di Insert';
    }
-
   public function index()
   {
     $data['title'] = "Left Stuff";
@@ -124,14 +122,6 @@ class LeftStuffController extends CI_Controller
         echo FALSE;
       }
     }
-  }
-  public function coba()
-  {
-   //$this->id_left_stuff = "MANTAP";
-  }
-  public function coba2()
-  {
-  //  echo $this->id_left_stuff;
   }
   public function trash()
   {
