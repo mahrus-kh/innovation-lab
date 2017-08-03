@@ -9,6 +9,7 @@ class LeftStuffController extends CI_Controller
   {
     parent::__construct();
     $this->load->model('LeftStuff/LeftStuffModel');
+    $this->load->library('Datatables');
   }
   function insert_dummy(){
        $jumlah_data = 25;
@@ -37,35 +38,7 @@ class LeftStuffController extends CI_Controller
   public function show_data()
   {
     if ($this->input->is_ajax_request()) {
-        $this->load->library('datatables_ssp');
-        $table = 'tb_left_stuff';
-        $primaryKey = 'id_left_stuff';
-        $columns = array(
-            array('db' => 'stuff_name', 'dt' => 'stuff_name'),
-            array('db' => 'location', 'dt' => 'location'),
-            array('db' => 'posted_at', 'dt' => 'posted_at'),
-            array('db' => 'status', 'dt' => 'status'),
-            array(
-                'db' => 'id_left_stuff',
-                'dt' => 'tools',
-                'formatter' => function($a) {
-                    return '<button type="button" class="btn btn-sm" onclick="edit(' . $a .  ')"><span class="glyphicon glyphicon-edit" aria-hidden="true"></button>
-                            <button type="button" class="btn btn-sm" onclick="del(' . $a .  ')"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button>';
-                }
-            ),
-        );
-        $sql_details = array(
-            'user' => 'root',
-            'pass' => 'root',
-            'db' => 'db_ilab',
-            'host' => 'localhost'
-        );
-        echo json_encode(
-                Datatables_ssp::simple($_GET, $sql_details, $table, $primaryKey, $columns)
-        );
-    }
-    else {
-      redirect(site_url('left-stuff/show'));
+      echo $this->LeftStuffModel->show_data();
     }
   }
 

@@ -3,6 +3,16 @@
  */
 class LeftStuffModel extends CI_Model
 {
+  private $tools = '<button type="button" class="btn btn-sm" onclick="edit($1)"><span class="glyphicon glyphicon-edit" aria-hidden="true"></button>
+                    <button type="button" class="btn btn-sm" onclick="del($1)"><span class="glyphicon glyphicon-trash" aria-hidden="true"></button>
+                    ';
+  function show_data()
+  {
+    $this->datatables->select('id_left_stuff,stuff_name,location,posted_at,status');
+    $this->datatables->from('tb_left_stuff');
+    $this->datatables->add_column('tools', $this->tools, 'id_left_stuff');
+    return $this->datatables->generate();
+  }
   public function trash($id)
   {
     $this->db->where('id_left_stuff', $id);

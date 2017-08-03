@@ -226,7 +226,7 @@ $(document).ready(function () {
                   "processing": true,
                   "serverSide": true,
                   "order": [[2,'desc'],[3,'asc']],
-                  "ajax": "show_data",
+                  "ajax": {"url": "show_data", "type": "POST"},
                   "columns": [
                         {"data": "stuff_name"},
                         {"data": "location"},
@@ -306,7 +306,7 @@ function edit(id) {
         type: "POST",
         url: method,
         data: $("#form-left-stuff").serialize(),
-        success: function (data) {        
+        success: function (data) {
           if (data == 1) {
             $("#form-left-stuff")[0].reset()
             $("#modal-left-stuff").modal("hide")

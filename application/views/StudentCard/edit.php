@@ -133,85 +133,99 @@
           <div class="col-sm-6 col-md-10">
             <div class="box box-primary">
               <div class="box-header with-border">
-                <h4 class="box-tittle">Student Card Data</h4>
+                <h4 class="box-tittle">Data Details of Student Card</h4>
                   <div class="box-tools pull-right">
-                      <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modal-add-sc"><span class="glyphicon glyphicon-plus"></span> Student Card</button>
+                      <button type="button" class="btn btn-primary btn-sm" onclick="add()"><span class="glyphicon glyphicon-plus"></span> Student Card</button>
                   </div>
               </div>
               <div class="box-body">
-                <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped" id="student-card-dt">
-                    <thead>
-                      <tr class="info">
-                        <th>ID Student</th>
-                        <th>Name</th>
-                        <th>Status Print</th>
-                        <th>Status Taken</th>
-                        <th>Tools</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-              </div>
+                <form class="form-horizontal" method="post">
+                    <div class="form-group">
+                      <label for="" class="col-sm-2 control-label">ID Student</label>
+                      <div class="col-sm-3">
+                        <input type="text" class="form-control" name="id_student">
+                      </div>
+                    </div>
+                   <div class="form-group">
+                     <label for="" class="col-sm-2 control-label">Full Name</label>
+                     <div class="col-sm-6">
+                       <input type="text" class="form-control" name="name">
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label for="" class="col-sm-2 control-label">Place of Birth</label>
+                     <div class="col-sm-6">
+                       <input type="text" class="form-control" name="place_of_birth">
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label for="" class="col-sm-2 control-label">Date of Birth</label>
+                     <div class="col-sm-3">
+                       <input type="text" class="form-control" name="date_of_birth">
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label for="" class="col-sm-2 control-label">Home Address</label>
+                     <div class="col-sm-6">
+                       <textarea class="form-control" rows="2" name="address"></textarea>
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label for="" class="col-sm-2 control-label">Phone</label>
+                     <div class="col-sm-3">
+                       <input type="number" class="form-control" name="phone">
+                     </div>
+                   </div>
+                   <div class="form-group">
+                     <label for="" class="col-sm-2 control-label">Etc</label>
+                     <div class="col-sm-6">
+                       <textarea class="form-control" rows="1" name="etc"></textarea>
+                     </div>
+                   </div>
+             <div class="box-footer">
+                    <div class="form-group">
+                      <label for="" class="col-sm-2 control-label"></label>
+                      <div class="col-sm-6">
+                        <button type="submit" class="btn btn-success">UPDATE</button>
+                        <button type="button" class="btn btn-default">Cancel</button>
+                        <button type="reset" class="btn btn-default">Reset</button>
+                      </div>
+                    </div>
+             </div>
+           </form>
               </div>
             </div>
           </div>
           <div class="col-sm-6 col-md-2">
             <div class="box box-danger box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Not Printed</h3>
+              </div>
               <div class="box-body"><b><div id="not_printed"></div></b></div>
             </div>
             <div class="box box-danger box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Have Not Taken</h3>
+              </div>
               <div class="box-body"><b><div id="have_not_taken"></div></b></div>
             </div>
             <div class="box box-primary box-solid">
+              <div class="box-header">
+                <h3 class="box-title">All</h3>
+              </div>
               <div class="box-body"><b><div id="all"></div></b></div>
             </div>
             <div class="box box-success box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Printed</h3>
+              </div>
               <div class="box-body"><b><div id="printed"></div></b></div>
             </div>
             <div class="box box-success box-solid">
+              <div class="box-header">
+                <h3 class="box-title">Taken</h3>
+              </div>
               <div class="box-body"><b><div id="taken"></div></b></div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-6 col-md-5">
-            <div class="box box-primary">
-              <div class="box-header with-border">
-                <h4 class="box-tittle">Program Study Data</h4>
-                  <div class="box-tools pull-right">
-                      <button type="button" class="btn btn-primary btn-sm"><span class="glyphicon glyphicon-plus"></span> Prody</button>
-                  </div>
-              </div>
-              <div class="box-body">
-                <div class="table-responsive">
-                <table class="table table-bordered table-hover table-striped" id="">
-                    <thead>
-                      <tr class="info">
-                        <th>Program Study</th>
-                        <th>Tools</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-              </div>
-              </div>
-            </div>
-          </div>
-          <div class="col-sm-6 col-md-7">
-            <div class="row">
-                <?php for ($i=0; $i <5 ; $i++) { //Loop how many from database
-                  echo '<div class="col-sm-6 col-md-4">
-                    <div class="box box-primary">
-                      <div class="box-header">
-                        <h3 class="box-title">Program Study</h3>
-                      </div>
-                      <div class="box-body">30</div>
-                    </div>
-                  </div>';
-                } ?>
             </div>
           </div>
         </div>
@@ -249,43 +263,9 @@
 </body>
 </html>
 <script type="text/javascript">
-  var studentcard_dt;
 $(document).ready(function () {
     count_student_card();
-    studentcard_dt = $("#student-card-dt").DataTable({
-                    "autoWidth": false,
-                    "processing": true,
-                    "serverSide": true,
-                    "order": [[2,'asc'],[3,'asc']],
-                    "ajax": {"url": "show_data", "type": "POST"},
-                    "columns": [
-                          {"data": "id_student", "class": "text-center"},
-                          {"data": "name"},
-                          {"data": "status_printed", "class": "text-center"},
-                          {"data": "status_taken", "class": "text-center"},
-                          {"data": "tools", "class": "text-center","orderable": false}
-                    ],
-                 });
-
 });
-
-function save() {
-    var id_student = $('[name="id_student"]').val();
-    var foto = $('[name="foto"]').val()
-    alert(foto)
-
-    $.ajax({
-      type: "POST",
-      url: "add",
-      data: {id_student:id_student,foto:foto},
-      success: function (data) {
-        alert(data)
-      }
-    });
-};
-function mantap(data) {
-  alert(data)
-};
 
 function count_student_card() {
     $.ajax({
@@ -293,11 +273,11 @@ function count_student_card() {
         url: "count_student_card",
         dataType: "json",
         success: function (data) {
-          $("#all").html("All Stuff Left : " + data.all)
-          $("#printed").html("Printed : " + data.printed)
-          $("#taken").html("Taken : " + data.taken)
-          $("#not_printed").html("Not Printed :" + data.not_printed)
-          $("#have_not_taken").html("Have Not Taken : " + data.have_not_taken)
+          $("#all").html(data.all)
+          $("#printed").html(data.printed)
+          $("#taken").html(data.taken)
+          $("#not_printed").html(data.not_printed)
+          $("#have_not_taken").html(data.have_not_taken)
         }
     });
 };
